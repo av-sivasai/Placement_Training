@@ -1,0 +1,94 @@
+@page {
+    size: A4;
+    margin: 12mm;
+}
+
+body {
+    width: 200mm;
+    min-height: 100mm;
+    margin: auto;
+    padding: 3mm;
+    box-sizing: auto;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    line-height: 1.4;
+    HEIGHT: 100%;
+    color: #000;
+    background: #fff;
+    BORDER: 1px solid #000;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 5px;
+    margin-top: 0;
+}
+
+h2 {
+    font-size: 15px;
+    margin-top: 12px;
+    margin-bottom: 6px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+p {
+    margin: 3px 0;
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #000;
+    margin: 8px 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 5px;
+}
+
+td {
+    padding: 0;
+    vertical-align: top;
+}
+
+ul {
+    margin-top: 3px;
+    margin-bottom: 6px;
+    padding-left: 18px;
+}
+
+li {
+    margin-bottom: 2px;
+}
+
+center p {
+    margin-top: 4px;
+    font-size: 11px;
+}
+
+b {
+    font-weight: 700;
+}
+
+/* Print Optimization */
+@media print {
+    body {
+        margin: 0;
+        padding: auto;
+        width: auto;
+        min-height: auto;
+    }
+
+    a {
+        color: #000;
+        text-decoration: none;
+    }
+}
