@@ -1,27 +1,67 @@
-function addStudent() {
-    let name = document.getElementById("name").value;
-    let age = document.getElementById("age").value;
-    let course = document.getElementById("course").value;  
+let studentCount = 0;
 
-    if(name === "" || age === "" || course === "") {
-        alert("Please fill in all fields");
+function addStudent() {
+
+    const name = document.getElementById("name").value.trim();
+    const roll = document.getElementById("roll").value.trim();
+    const department = document.getElementById("department").value.trim();
+    const email = document.getElementById("email").value.trim();
+
+    if (
+        name === "" ||
+        roll === "" ||
+        department === "" ||
+        email === ""
+    ) {
+        alert("Please fill all fields");
+        return;
     }
-    else {
-    let card = document.createElement("div");
-    card.classList.add("student-card");
+
+    const emailPattern =
+        /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailPattern.test(email)) {
+        alert("Enter valid email");
+        return;
+    }
+
+    const card = document.createElement("div");
+    card.classList.add("card");
+
     card.innerHTML = `
         <h3>${name}</h3>
-        <p>Age: ${age}</p>
-        <p>Course: ${course}</p>
-        <button onclick="editStudent(this)">Edit</button>
-        <button onclick="deleteStudent(this)">Delete</button>
+        <p><strong>Roll No:</strong> ${roll}</p>
+        <p><strong>Department:</strong> ${department}</p>
+        <p><strong>Email:</strong> ${email}</p>
+
+        <button class="delete-btn">
+            Delete Student
+        </button>
     `;
 
-    document.getElementById("studentList").appendChild(card);
-    document.getElementById("name").value = "";
-    document.getElementById("age").value = "";
-    document.getElementById("course").value = "";
-    }
-    
-}
+    card
+    .querySelector(".delete-btn")
+    .addEventListener("click", function () {
 
+        card.remove();
+
+        studentCount--;
+
+        document.getElementById("count").textContent =
+            studentCount;
+    });
+
+    document
+    .getElementById("studentContainer")
+    .appendChild(card);
+
+    studentCount++;
+
+    document.getElementById("count").textContent =
+        studentCount;
+
+    document.getElementById("name").value = "";
+    document.getElementById("roll").value = "";
+    document.getElementById("department").value = "";
+    document.getElementById("email").value = "";
+}
