@@ -3,14 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Manager App</title>
+    <title>Student Management System</title>
     <link rel="stylesheet" href="student.css">
 </head>
 <body>
 
 <div class="container">
 
-    <h1>🎓 Student Manager App</h1>
+    <header>
+        <h1>🎓 Student Management System</h1>
+
+    </header>
+
+    <div class="search-box">
+        <input
+            type="text"
+            id="search"
+            placeholder="Search Student By Name or Roll Number..."
+        >
+    </div>
 
     <div class="form-container">
 
@@ -22,13 +33,25 @@
 
         <input type="email" id="email" placeholder="Email">
 
-        <button onclick="addStudent()">Add Student</button>
+        <div class="btn-container">
+        <button id="addBtn">Add Student</button>
+    </div>
 
     </div>
 
-    <h2>Total Students :
-        <span id="count">0</span>
-    </h2>
+    <div class="stats">
+
+        <div class="stat-card">
+            <h3>Total Students</h3>
+            <p id="totalStudents">0</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>Departments</h3>
+            <p id="departmentCount">0</p>
+        </div>
+
+    </div>
 
     <div id="studentContainer"></div>
 
