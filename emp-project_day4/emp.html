@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management System</title>
+    <link rel="stylesheet" href="emp.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>Employee Management System</h1>
+
+        <div class="form-section">
+
+            <input
+                type="text"
+                id="empName"
+                placeholder="Employee Name"
+            >
+
+            <input
+                type="number"
+                id="empAge"
+                placeholder="Age"
+            >
+
+            <select id="empDepartment" aria-label="Department">
+                <option value="">Select Department</option>
+                <option value="HR">HR</option>
+                <option value="IT">IT</option>
+                <option value="Finance">Finance</option>
+                <option value="Marketing">Marketing</option>
+            </select>
+
+            <input
+                type="number"
+                id="empSalary"
+                placeholder="Salary"
+            >
+
+            <button
+                id="addBtn"
+                onclick="addEmployee()"
+                aria-label="Add Employee"
+            >
+                Add Employee
+            </button>
+
+        </div>
+
+        <div class="search-box">
+            <input
+                type="text"
+                id="search"
+                placeholder="Search Employee..."
+                onkeyup="searchEmployee()"
+            >
+        </div>
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Department</th>
+                    <th>Salary</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody id="employeeTable">
+                <!-- Employee rows will be inserted here -->
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <script src="emp.js"></script>
+
+</body>
+</html>
