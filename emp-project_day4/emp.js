@@ -141,7 +141,8 @@ function searchEmployee() {
 
     const filteredEmployees = employees.filter(employee =>
         employee.name.toLowerCase().includes(searchText) ||
-        employee.department.toLowerCase().includes(searchText)
+        employee.department.toLowerCase().includes(searchText) ||
+        employee.salary.toString().includes(searchText)
     );
 
     displayEmployees(filteredEmployees);
