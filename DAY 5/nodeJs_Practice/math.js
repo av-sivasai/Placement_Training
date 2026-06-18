@@ -1,7 +1,12 @@
 function add(a, b) {
     return a + b;
 }
-function subtract(a, b) {
+
+function sub(a, b) {
     return a - b;
 }
-export {add,subtract};
+
+module.exports = {
+    add,
+    sub
+};
