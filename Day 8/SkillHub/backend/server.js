@@ -15,6 +15,9 @@ require("./routes/courseRoutes");
 const contactRoutes =
 require("./routes/contactRoutes");
 
+const authRoutes = 
+require("./routes/authRoutes");
+
 const app = express();
 // DATABASE CONNECTION
 
@@ -34,6 +37,10 @@ app.use(
 app.use(
   "/api/contact",
   contactRoutes
+);
+app.use(
+  "/api/auth",
+  authRoutes
 );
 
 const PORT =

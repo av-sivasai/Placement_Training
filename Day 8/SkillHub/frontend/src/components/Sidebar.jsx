@@ -1,6 +1,11 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
 function Sidebar() {
+  const { user } = useContext(AuthContext);
+
+  if (!user) return null;
 
   return (
     <aside>

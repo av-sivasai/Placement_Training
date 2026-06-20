@@ -1,22 +1,14 @@
-const express =
-require("express");
+const express = require("express");
 
-const router =
-express.Router();
+const router = express.Router();
 
 const {
-  saveMessage
-}
-=
-require(
-  "../controllers/contactController"
-);
+  saveMessage,
+  getMessages
+} = require("../controllers/contactController");
 
-router.post(
-  "/",
-  saveMessage
-);
+router.post("/", saveMessage);
+
+router.get("/", getMessages);
 
 module.exports = router;
-
-

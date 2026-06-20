@@ -5,16 +5,17 @@ import API from "../api/courseApi";
 import { toast } from "react-toastify";
 
 function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: ""
+  });
 
-  const [formData, setFormData] =
-    useState({
-      name: "",
-      email: "",
-      message: ""
-    });
+  const [messages, setMessages] = useState([]);
+
+  const [loading, setLoading] = useState(false);
 
   async function handleSubmit(e) {
-
     e.preventDefault();
 
     if (
@@ -22,16 +23,12 @@ function Contact() {
       !formData.email ||
       !formData.message
     ) {
-
-      toast.error(
-        "All Fields Required"
-      );
+      toast.error("All Fields Required");
 
       return;
     }
 
     try {
-
       await API.post(
         "/contact",
         formData
@@ -46,21 +43,37 @@ function Contact() {
         email: "",
         message: ""
       });
-
     }
 
     catch (error) {
-
       toast.error(
         "Failed To Send Message"
       );
+    }
+  }
 
+  async function fetchMessages() {
+    setLoading(true);
+
+    try {
+      const response =
+        await API.get("/contact");
+
+      setMessages(response.data);
     }
 
+    catch (error) {
+      toast.error(
+        "Failed To Fetch Messages"
+      );
+    }
+
+    finally {
+      setLoading(false);
+    }
   }
 
   return (
-
     <div className="page-container">
 
       <h1>Contact Us</h1>
@@ -115,8 +128,63 @@ function Contact() {
 
       </form>
 
-    </div>
+      <br /><br />
 
+      <button
+        type="button"
+        onClick={fetchMessages}
+      >
+        Received Messages
+      </button>
+
+      <br /><br />
+
+      {loading && (
+        <p>Loading messages...</p>
+      )}
+
+      {!loading &&
+        messages.length > 0 && (
+
+          <div className="messages-section">
+
+            <h2>Received Messages</h2>
+
+            <div className="messages-container">
+
+              {messages.map((msg) => (
+
+                <div
+                  key={msg._id}
+                  className="message-card"
+                >
+
+                  <p>
+                    <strong>Name:</strong>{" "}
+                    {msg.name}
+                  </p>
+
+                  <p>
+                    <strong>Email:</strong>{" "}
+                    {msg.email}
+                  </p>
+
+                  <p>
+                    <strong>Message:</strong>{" "}
+                    {msg.message}
+                  </p>
+
+                </div>
+
+              ))}
+
+            </div>
+
+          </div>
+
+        )}
+
+    </div>
   );
 }
 
